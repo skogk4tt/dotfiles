@@ -63,7 +63,7 @@ if os.path.isdir(os.path.expanduser("~/dotfiles")):
     os.system("rm -rf ~/dotfiles")
 print("Clonando repositorio")
 os.chdir(os.path.expanduser("~"))
-os.system("git clone --depth=1 https://github.com/gh0stzk/dotfiles.git")
+os.system("git clone --depth=1 https://github.com/skogk4tt/dotfiles.git")
 time.sleep(2)
 os.system("clear")
 
