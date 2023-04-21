@@ -137,8 +137,9 @@ except Exception as e:
     time.sleep(1)
 
 os.system("cp -f $HOME/dotfiles/home/.zshrc $HOME")
+os.system("cp -f $HOME/dotfiles/misc/walls/arch.png /usr/share/pixmaps/arch.png")
 os.system("fc-cache -rv >/dev/null 2>&1")
-print("Files copied successfully!!")
+print("Archivos transferidos")
 time.sleep(3)
 
 # Instalando paru y eww
