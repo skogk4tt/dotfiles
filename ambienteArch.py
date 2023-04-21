@@ -146,6 +146,7 @@ os.system("cp -f $HOME/dotfiles/home/.zshrc $HOME")
 os.system("sudo cp -f $HOME/dotfiles/misc/walls/arch.png /usr/share/pixmaps/arch.png")
 os.system("sudo mkdir -p /root/.config/zsh && sudo touch /root/.config/zsh/zhistory")
 os.system("sudo ln -s /home/desarrollo/.zshrc /root/.zshrc")
+os.system("cp -f $HOME/dotfiles/misc/dracula /usr/share/themes/")
 
 os.system("fc-cache -rv >/dev/null 2>&1")
 print("Archivos transferidos")
