@@ -2,6 +2,12 @@ import os
 import shutil
 import time
 import glob
+
+# Define colores
+color_verde = "\033[32m"
+color_verde = "\033[31m"
+reset_color = "\033[0m"
+
 # Revisar si el usuario que ejecuta el script es root
 if os.geteuid() == 0:
     print("Este script NO debe ser ejecutado como usuario ROOT")
@@ -75,7 +81,7 @@ target_folder = os.path.expanduser('~/.config/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
@@ -86,7 +92,7 @@ target_folder = os.path.expanduser('~/.local/bin/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
@@ -97,7 +103,7 @@ target_folder = os.path.expanduser('~/.local/share/applications/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
@@ -108,7 +114,7 @@ target_folder = os.path.expanduser('~/.local/share/fonts/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
@@ -119,7 +125,7 @@ target_folder = os.path.expanduser('~/.local/share/asciiart/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
@@ -130,14 +136,17 @@ target_folder = os.path.expanduser('~/.mozilla/firefox/*.default-release/')
 
 try:
     shutil.copytree(source_folder, target_folder, dirs_exist_ok=True)
-    print(f"{source_folder} Copiado")
+    print(f"{source_folder} {color_verde}Copiado{reset_color}")
     time.sleep(1)
 except Exception as e:
     print(f"Error copying files: {str(e)}")
     time.sleep(1)
 
 os.system("cp -f $HOME/dotfiles/home/.zshrc $HOME")
-os.system("cp -f $HOME/dotfiles/misc/walls/arch.png /usr/share/pixmaps/arch.png")
+os.system("sudo cp -f $HOME/dotfiles/misc/walls/arch.png /usr/share/pixmaps/arch.png")
+os.system("sudo mkdir -p /root/.config/zsh && sudo touch/root/.config/zsh/zhistory")
+os.system("sudo ln -s /home/desarrollo/.zshrc /root/.zshrc")
+
 os.system("fc-cache -rv >/dev/null 2>&1")
 print("Archivos transferidos")
 time.sleep(3)
@@ -172,6 +181,7 @@ print ("Comprobando si tu shell es zsh")
 if os.environ['SHELL'] != "/usr/bin/zsh":
     print("Cambiando tu shell a zsh, se necesita su pass")
     os.system("sudo chsh -s /usr/bin/zsh")
+    os.system("sudo chsh -s /usr/bin/zsh root")
     os.system("zsh")
 else:
     print("Tu shell es zsh, Reinicia el equipo")
