@@ -5,7 +5,7 @@ import glob
 
 # Define colores
 color_verde = "\033[32m"
-color_verde = "\033[31m"
+color_rojo = "\033[31m"
 reset_color = "\033[0m"
 
 # Revisar si el usuario que ejecuta el script es root
@@ -144,7 +144,7 @@ except Exception as e:
 
 os.system("cp -f $HOME/dotfiles/home/.zshrc $HOME")
 os.system("sudo cp -f $HOME/dotfiles/misc/walls/arch.png /usr/share/pixmaps/arch.png")
-os.system("sudo mkdir -p /root/.config/zsh && sudo touch/root/.config/zsh/zhistory")
+os.system("sudo mkdir -p /root/.config/zsh && sudo touch /root/.config/zsh/zhistory")
 os.system("sudo ln -s /home/desarrollo/.zshrc /root/.zshrc")
 
 os.system("fc-cache -rv >/dev/null 2>&1")
@@ -176,12 +176,8 @@ os.system("systemctl --user start mpd.service")
 print("servicio MPD listo")
 time.sleep(2)
 
-#
-print ("Comprobando si tu shell es zsh")
-if os.environ['SHELL'] != "/usr/bin/zsh":
-    print("Cambiando tu shell a zsh, se necesita su pass")
-    os.system("sudo chsh -s /usr/bin/zsh")
-    os.system("sudo chsh -s /usr/bin/zsh root")
-    os.system("zsh")
-else:
-    print("Tu shell es zsh, Reinicia el equipo")
+# Cambio de SHELL a ZSH
+print("Cambiando tu shell a zsh, puede necesitar su pass")
+os.system("sudo chsh -s /usr/bin/zsh")
+os.system("sudo chsh -s /usr/bin/zsh root")
+os.system("zsh")
