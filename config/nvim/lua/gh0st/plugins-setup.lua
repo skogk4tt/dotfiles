@@ -18,6 +18,10 @@ vim.cmd([[
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
   augroup end
+  augroup RestoreCursorShapeOnExit
+    autocmd!
+    autocmd VimLeave * set guicursor=a:ver20
+  augroup END
 ]])
 
 -- import packer safely
