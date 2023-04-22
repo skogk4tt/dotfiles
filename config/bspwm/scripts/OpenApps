@@ -15,7 +15,7 @@ case "$1" in
   --rice)
 	RiceSelector & disown;;
   --terminal)
-    alacritty & disown;;
+    kitty & disown;;
   --floating)
     alacritty --class FloaTerm,Alacritty & disown;;
   --update)
