@@ -381,7 +381,7 @@ logo "Aplicando optmizaciones.."
 	titleopts "Configurando almacenamiento personal"
 	cat >> /mnt/etc/fstab <<-EOL		
 	# My sTuFF
-	UUID=01D3AE59075CA1F0		/run/media/$USR/windows 	ntfs-3g		auto,rw,users,uid=1000,gid=984,dmask=022,fmask=133,big_writes,hide_hid_files,windows_names,noatime	0 0
+	#UUID=01D3AE59075CA1F0		/run/media/$USR/windows 	ntfs-3g		auto,rw,users,uid=1000,gid=984,dmask=022,fmask=133,big_writes,hide_hid_files,windows_names,noatime	0 0
 	EOL
 	
 	okie
