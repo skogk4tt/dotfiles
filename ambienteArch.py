@@ -33,7 +33,7 @@ dependencias = [
                 "base-devel", "rustup", "pacman-contrib", "bspwm", "polybar", "sxhkd",
 			    "alacritty", "brightnessctl", "dunst", "rofi", "lsd",
 			    "jq", "polkit-gnome", "git", "playerctl", "mpd",
-			    "ncmpcpp", "geany", "ranger", "mpc", "picom",
+			    "ncmpcpp", "geany", "ranger", "mpc", "picom", "kitty",
 			    "feh", "ueberzug", "maim", "pamixer", "libwebp", "xdg-user-dirs",
 			    "webp-pixbuf-loader", "xorg-xprop", "xorg-xkill", "physlock", "papirus-icon-theme",
 			    "ttf-jetbrains-mono", "ttf-jetbrains-mono-nerd", "ttf-terminus-nerd", "ttf-inconsolata", "ttf-joypixels",
