@@ -218,7 +218,7 @@ logo "Instalando sistema base"
 	         base-devel \
 	         linux-zen \
 	         linux-firmware \
-	         dhcpcd \
+	         networkmanager \
 	         intel-ucode \
 	         mkinitcpio \
 	         reflector \
