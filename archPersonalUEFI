@@ -240,14 +240,14 @@ logo "Generando FSTAB"
 	
 logo "Configurando Timezone y Locales"
 		
-	$CHROOT ln -sf /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+	$CHROOT ln -sf /usr/share/zoneinfo/America/Santiago /etc/localtime
 	$CHROOT hwclock --systohc
 	echo
-	echo "es_MX.UTF-8 UTF-8" >> /mnt/etc/locale.gen
+	echo "es_CL.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 	$CHROOT locale-gen
-	echo "LANG=es_MX.UTF-8" >> /mnt/etc/locale.conf
+	echo "LANG=es_CL.UTF-8" >> /mnt/etc/locale.conf
 	echo "KEYMAP=la-latin1" >> /mnt/etc/vconsole.conf
-	export LANG=es_MX.UTF-8
+	export LANG=es_CL.UTF-8
 	okie
 	clear
 
@@ -299,7 +299,7 @@ logo "Refrescando mirros en la nueva Instalacion"
 
 logo "Instalando GRUB"
 
-	$CHROOT pacman -S grub os-prober ntfs-3g --noconfirm >/dev/null
+	$CHROOT pacman -S grub os-prober efibootmgr --noconfirm >/dev/null
 	$CHROOT grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 	
 	sed -i 's/quiet/zswap.enabled=0 mitigations=off nowatchdog/; s/#GRUB_DISABLE_OS_PROBER/GRUB_DISABLE_OS_PROBER/' /mnt/etc/default/grub
@@ -555,26 +555,7 @@ EOL
 		printf "%sdrirc%s generated in --> /etc" "${CGR}" "${CNC}"
 		sleep 2
 		clear
-	
-#----------------------------------------
-#          Restoring my dotfiles
-#----------------------------------------
-	
-
-logo "Restaurando mis dotfiles. Esto solo funciona es mi maquina z0mbi3-b0x"
-			
-	echo "rsync -vrtlpX /dots/dotfiles/ /home/$USR/" | $CHROOT su "$USR"
-	
-	$CHROOT mv /home/"$USR"/.themes/Dracula /usr/share/themes
-	$CHROOT rm -rf /home/"$USR"/.themes
-	$CHROOT cp /dots/stuff/{arch.png,gh0st.png} /usr/share/pixmaps/
-	
-	echo "cp -r /dots/stuff/z0mbi3-Fox-Theme/chrome /home/$USR/.mozilla/firefox/*.default-release/" | $CHROOT su "$USR"
-	echo "cp /dots/stuff/z0mbi3-Fox-Theme/user.js /home/$USR/.mozilla/firefox/*.default-release/" | $CHROOT su "$USR"
-	okie
-	sleep 5
-	clear
-
+		
 #----------------------------------------
 #          Reverting No Pasword Privileges
 #----------------------------------------
