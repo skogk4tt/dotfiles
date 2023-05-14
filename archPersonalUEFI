@@ -302,7 +302,7 @@ logo "Refrescando mirros en la nueva Instalacion"
 
 logo "Instalando GRUB"
 
-	$CHROOT pacman -S grub os-prober efibootmgr --noconfirm >/dev/null
+	$CHROOT pacman -S grub os-prober efibootmgr ntfs-3g --noconfirm >/dev/null
 	$CHROOT grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 	$CHROOT grub-mkconfig -o /boot/grub/grub.cfg
 	okie
@@ -381,7 +381,7 @@ logo "Aplicando optmizaciones.."
 	titleopts "Configurando almacenamiento personal"
 	cat >> /mnt/etc/fstab <<-EOL		
 	# My sTuFF
-	#UUID=01D3AE59075CA1F0		/run/media/$USR/windows 	ntfs-3g		auto,rw,users,uid=1000,gid=984,dmask=022,fmask=133,big_writes,hide_hid_files,windows_names,noatime	0 0
+	UUID=01D3AE59075CA1F0		/run/media/$USR/windows 	ntfs-3g		auto,rw,users,uid=1000,gid=984,dmask=022,fmask=133,big_writes,hide_hid_files,windows_names,noatime	0 0
 	EOL
 	
 	okie
