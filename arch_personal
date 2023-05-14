@@ -402,11 +402,10 @@ logo "Creando Formatenado y Montando Particiones"
 	if [ "$bootmode" == "uefi" ]; then
 	
 			printf "\n Formateando y montando la particion EFI\n Espere..\n"
-			echo $efipart
-			sleep 10
-			mkfs.fat -F 32 /dev/sda1 >/dev/null 2>&1
+			sleep 3
 			mkdir -p /mnt/efi
-			mount /dev/sda1 /mnt/efi
+			mkfs.fat -F 32 "${efipart}" >/dev/null 2>&1
+			mount "${efipart}" /mnt/efi
 			sleep 3
 	fi
 			okie
