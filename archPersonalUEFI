@@ -124,7 +124,6 @@ logo "Formatenado y Montando Particiones"
 				mkfs.ext4 -L Arch "${partroot}" >/dev/null 2>&1
 				mount "${partroot}" /mnt
 				mkdir /mnt/boot
-				mount /dev/sda1 /mnt/boot
 				sleep 2
 				break
 			fi
