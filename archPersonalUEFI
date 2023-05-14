@@ -277,7 +277,7 @@ logo "Usuario Y Passwords"
 	echo "$USR:$PASSWD" | $CHROOT chpasswd
 	sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/; /^root ALL=(ALL:ALL) ALL/a '"${USR}"' ALL=(ALL:ALL) ALL' /mnt/etc/sudoers
 	echo "Defaults insults" >> /mnt/etc/sudoers
-	printf " %sroot%s : %s%s%s\n %s%s%s : %s%s%s\n" "${CBL}" "${CNC}" "${CRE}" "${PASSWDR}" "${CNC}" "${CYE}" "${USR}" "${CNC}" "${CRE}" "${PASSWD}" "${CNC}"
+	#printf " %sroot%s : %s%s%s\n %s%s%s : %s%s%s\n" "${CBL}" "${CNC}" "${CRE}" "${PASSWDR}" "${CNC}" "${CYE}" "${USR}" "${CNC}" "${CRE}" "${PASSWD}" "${CNC}"
 	okie
 	sleep 3
 	clear
@@ -301,10 +301,6 @@ logo "Instalando GRUB"
 
 	$CHROOT pacman -S grub os-prober efibootmgr --noconfirm >/dev/null
 	$CHROOT grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-	
-	sed -i 's/quiet/zswap.enabled=0 mitigations=off nowatchdog/; s/#GRUB_DISABLE_OS_PROBER/GRUB_DISABLE_OS_PROBER/' /mnt/etc/default/grub
-	sed -i "s/MODULES=()/MODULES=(intel_agp i915)/" /mnt/etc/mkinitcpio.conf
-	echo
 	$CHROOT grub-mkconfig -o /boot/grub/grub.cfg
 	okie
 	clear  
